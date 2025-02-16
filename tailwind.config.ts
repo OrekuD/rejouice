@@ -12,6 +12,13 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        suisseintl: ["SuisseIntl", "sans-serif"],
+      },
+      fontSize: {
+        lg: "1.25rem",
+        "6xl": "4rem",
+      },
     },
   },
   plugins: [],

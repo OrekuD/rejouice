@@ -3,19 +3,41 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    --background: #000000;
+    --foreground: #ffffff;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    font-family: "SuisseIntl";
+    font-weight: 300;
+}
+
+input {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+@font-face {
+    font-family: "SuisseIntl";
+    src: url("/fonts/SuisseIntl-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SuisseIntl";
+    src: url("/fonts/SuisseIntl-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
 }
