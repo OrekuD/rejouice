@@ -12,12 +12,7 @@ import {
   RivianLogo,
 } from "@/components/icons";
 import { useWindowResize } from "@/hooks/useWindowResize";
-import {
-  useInView,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { HighlightCard } from "@/components/highlight-card";
@@ -25,6 +20,7 @@ import rivianImage from "../../public/images/rivian.webp";
 import ouraImage from "../../public/images/oura.webp";
 import moxionImage from "../../public/images/moxion.webp";
 import React from "react";
+import { ShowreelCursor } from "@/components/showreel-cursor";
 
 const headerLinks = ["Home", "Work", "About", "Services", "Contact"];
 
@@ -71,9 +67,19 @@ const clients = [
   },
 ];
 
+type State = {
+  isVideoPreviewOpen: boolean;
+  isShowcaseReelInView: boolean;
+};
+
 export default function Home() {
   const { scrollY } = useScroll();
   const { height } = useWindowResize();
+  // const [isVideoPreviewOpen, setIsVideoPreviewOpen] = React.useState(false);
+  const [state, setState] = React.useState<State>({
+    isVideoPreviewOpen: false,
+    isShowcaseReelInView: false,
+  });
   const showcaseReelRef = React.useRef<HTMLDivElement>(null);
   const showcaseReelInView = useInView(showcaseReelRef);
   const { scrollYProgress: showcaseReelScrollYProgress } = useScroll({
@@ -81,6 +87,13 @@ export default function Home() {
     // offset: ["start end", "end start"],
     offset: ["start end", "end start"],
   });
+
+  const updateState = React.useCallback(
+    <T extends keyof State>(key: T, value: State[T]) => {
+      setState((prev) => ({ ...prev, [key]: value }));
+    },
+    [],
+  );
 
   const showcaseReelClipPath = useTransform(
     showcaseReelScrollYProgress,
@@ -94,14 +107,6 @@ export default function Home() {
     }
   }, [showcaseReelInView]);
 
-  // useMotionValueEvent(showcaseReelScrollYProgress, "change", (v) => {
-  //   console.log("-v", v);
-  // });
-
-  // useMotionValueEvent(showcaseReelClipPath, "change", (v) => {
-  //   console.log("-cl", v);
-  // });
-
   const videoContainerTranslateY = useTransform(
     scrollY,
     [0, height],
@@ -110,20 +115,20 @@ export default function Home() {
 
   return (
     <div className="">
-      <header className="fixed top-0 left-0 z-50 w-full flex items-center justify-between py-8 px-9 text-sm">
-        <Logo size={70} className="mix-blend-difference text-white" />
+      <ShowreelCursor
+        isVideoPreviewOpen={state.isVideoPreviewOpen}
+        isVisible={state.isShowcaseReelInView}
+      />
+      <header className="fixed top-0 left-0 z-50 mix-blend-difference w-full flex items-center justify-between py-8 px-9 text-sm">
+        <Logo size={70} className="text-white" />
         <div className="flex items-center gap-1 ml-44">
           {headerLinks.map((headerLink) => (
-            <Link
-              href="#"
-              key={headerLink}
-              className="mix-blend-difference text-white"
-            >
+            <Link href="#" key={headerLink} className="text-white">
               {headerLink}
             </Link>
           ))}
         </div>
-        <p className="mix-blend-difference text-white">
+        <p className="text-white">
           <span>↗ </span>Let's talk
           <span>↗</span>
         </p>
@@ -178,7 +183,18 @@ export default function Home() {
           </svg>
         </div>
       </motion.div>
-      <motion.div className="h-[105dvh] w-full -z-10 relative">
+      <motion.div
+        className="h-[105dvh] w-full relative cursor-pointer"
+        onClick={() =>
+          updateState("isVideoPreviewOpen", !state.isVideoPreviewOpen)
+        }
+        onMouseEnter={() => {
+          updateState("isShowcaseReelInView", true);
+        }}
+        onMouseLeave={() => {
+          updateState("isShowcaseReelInView", false);
+        }}
+      >
         <motion.video
           className="w-full h-full object-cover"
           loop={true}
@@ -323,7 +339,7 @@ export default function Home() {
             </motion.div>
           </div>
           <div
-            className="py-72 text-center text-6xl underline"
+            className="py-80 text-center text-6xl underline"
             style={{
               textDecorationThickness: 2,
               textUnderlineOffset: 8,
