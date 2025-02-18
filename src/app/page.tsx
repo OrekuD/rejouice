@@ -21,6 +21,7 @@ import ouraImage from "../../public/images/oura.webp";
 import moxionImage from "../../public/images/moxion.webp";
 import React from "react";
 import { ShowreelCursor } from "@/components/showreel-cursor";
+import { CustomLink } from "@/components/custom-link";
 
 const headerLinks = ["Home", "Work", "About", "Services", "Contact"];
 
@@ -66,6 +67,13 @@ const clients = [
     name: "Proof",
   },
 ];
+
+const ouraRingVideoUrl =
+  "https://rejouice-2024.cdn.prismic.io/rejouice-2024/Z2BZoJbqstJ98kkL_RJ-HIGHLIGHT-Work-02.mp4";
+const moxionVideoUrl =
+  "https://rejouice-2024.cdn.prismic.io/rejouice-2024/Z2BZvpbqstJ98kkM_RJ-HIGHLIGHT-Work-03.mp4";
+const rivianVideoUrl =
+  "https://rejouice-2024.cdn.prismic.io/rejouice-2024/Z2BZfpbqstJ98kkB_RJ-HIGHLIGHT-Work-01.mp4";
 
 type State = {
   isVideoPreviewOpen: boolean;
@@ -128,10 +136,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        <p className="text-white">
-          <span>↗ </span>Let's talk
-          <span>↗</span>
-        </p>
+        <CustomLink fontSize={14}>Let's talk</CustomLink>
       </header>
 
       <motion.div
@@ -158,7 +163,6 @@ export default function Home() {
           <path d="M216.8,0c-57.6-.8-100.9,40.4-100.9,108.1s46.9,108.9,102.1,108.9,87.4-29.3,94.6-70.9h-35.8c-6.8,24.2-25.8,38.8-58,38.8s-63.2-19.8-66.4-65.3h160.2c.8-5.9,1.2-11.5,1.2-17.4C313.7,51.5,283.1.8,216.8,0ZM153.2,89.5c5.2-40.8,30.2-57.4,62.8-57.4s56.4,16.2,60.8,57.4h-123.6Z"></path>
           <path d="M0,95.4v116h35v-113.2c0-39.6,20.3-61,52.5-61h21.5V3.2h-20.7C45.7,3.2,0,30.1,0,95.4Z"></path>
         </svg>
-
         <div className="mt-auto flex items-end text-white/80 leading-[1] gap-10">
           <div>
             <p>Strategy, Design,</p>
@@ -246,7 +250,7 @@ export default function Home() {
         </div>
         <div className="flex items-center justify-between text-lg mt-40 mb-3">
           <p>Highlights</p>
-          <p>See the work</p>
+          <CustomLink fontSize={20}>See the work</CustomLink>
         </div>
         <div className="space-y-5">
           <HighlightCard

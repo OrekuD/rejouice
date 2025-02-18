@@ -37,6 +37,7 @@ export default {
       },
       transitionTimingFunction: {
         "cubic-bezier-cursor": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "cubic-bezier-link": "cubic-bezier(0.52, 0, 0, 1)",
       },
     },
   },
