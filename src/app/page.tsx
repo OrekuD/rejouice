@@ -22,6 +22,7 @@ import moxionImage from "../../public/images/moxion.webp";
 import React from "react";
 import { ShowreelCursor } from "@/components/showreel-cursor";
 import { CustomLink } from "@/components/custom-link";
+import { ShowreelModal } from "@/components/showreel-modal";
 
 const headerLinks = ["Home", "Work", "About", "Services", "Contact"];
 
@@ -122,7 +123,13 @@ export default function Home() {
   );
 
   return (
-    <div className="">
+    <>
+      <ShowreelModal
+        isVisible={state.isVideoPreviewOpen}
+        onClose={() => updateState("isVideoPreviewOpen", false)}
+        hideCustomCursor={() => updateState("isShowcaseReelInView", false)}
+        showCustomCursor={() => updateState("isShowcaseReelInView", true)}
+      />
       <ShowreelCursor
         isVideoPreviewOpen={state.isVideoPreviewOpen}
         isVisible={state.isShowcaseReelInView}
@@ -138,7 +145,6 @@ export default function Home() {
         </div>
         <CustomLink fontSize={14}>Let's talk</CustomLink>
       </header>
-
       <motion.div
         className="pt-20 px-9 h-[90dvh] z-20 relative bg-black flex flex-col pb-8"
         style={{
@@ -196,6 +202,7 @@ export default function Home() {
           updateState("isShowcaseReelInView", true);
         }}
         onMouseLeave={() => {
+          if (state.isVideoPreviewOpen) return;
           updateState("isShowcaseReelInView", false);
         }}
       >
@@ -220,7 +227,6 @@ export default function Home() {
           Showreel
         </p>
       </motion.div>
-
       <div className="px-10 mb-48 pt-14 relative z-20">
         <p className="text-6xl leading-none">
           <span className="opacity-0">something</span> We blend the power of
@@ -434,6 +440,6 @@ export default function Home() {
           <path d="M0,95.4v116h35v-113.2c0-39.6,20.3-61,52.5-61h21.5V3.2h-20.7C45.7,3.2,0,30.1,0,95.4Z"></path>
         </svg>
       </footer>
-    </div>
+    </>
   );
 }

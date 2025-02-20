@@ -42,7 +42,7 @@ export function ShowreelCursor({
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed top-[7px] left-[40px] z-50 flex gap-2 mix-blend-difference transition-transform duration-300 pointer-events-none ease-cubic-bezier-cursor"
+          className="fixed top-[7px] left-[40px] flex gap-2 mix-blend-difference transition-transform duration-300 pointer-events-none ease-cubic-bezier-cursor z-[110]"
           style={{
             // transform: `translate(${mousePosition.x + 40}px, ${mousePosition.y + 7}px)`,
             translateX: mousePosition.positionX,

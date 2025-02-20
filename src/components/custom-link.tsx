@@ -1,7 +1,6 @@
 import React from "react";
 
 export function CustomLink({
-  href,
   fontSize,
   children,
 }: {
@@ -9,10 +8,6 @@ export function CustomLink({
   fontSize: 14 | 20;
   children: React.ReactNode;
 }) {
-  const translateX = React.useMemo(() => {
-    return `-translate-x-[${fontSize}px]`;
-  }, [fontSize]);
-
   return (
     <div
       className={`flex items-center gap-1 cursor-pointer group overflow-hidden leading-none`}
@@ -24,7 +19,7 @@ export function CustomLink({
         ↗
       </span>
       <span
-        className={`transition-transform duration-700 ease-cubic-bezier-link group-hover:translate-x-0 ${translateX}`}
+        className={`transition-transform duration-700 ease-cubic-bezier-link group-hover:translate-x-0 ${fontSize === 14 ? "-translate-x-[14px]" : "-translate-x-[20px]"}`}
       >
         {children}
       </span>
