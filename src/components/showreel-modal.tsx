@@ -61,7 +61,7 @@ export const ShowreelModal = ({
   );
 
   const onTimeUpdate = React.useCallback(() => {
-    const root: any = window.document.querySelector(":root");
+    const root: any = document.querySelector(":root");
 
     if (!videoRef.current || !root) return;
     const currentTime = videoRef.current.currentTime;
@@ -172,7 +172,7 @@ export const ShowreelModal = ({
                   autoPlay={true}
                   playsInline={true}
                   draggable={false}
-                  muted={true}
+                  muted={!videoState.isAudioEnabled}
                   controls={false}
                   onTimeUpdate={onTimeUpdate}
                 >
@@ -269,13 +269,10 @@ export const ShowreelModal = ({
                   <button
                     className="w-8 h-6 flex items-center justify-center"
                     onClick={() => {
-                      if (videoRef.current) {
-                        videoRef.current.muted = !videoState.isAudioEnabled;
-                      }
                       update("isAudioEnabled", !videoState.isAudioEnabled);
                     }}
                   >
-                    {videoState.isAudioEnabled ? (
+                    {!videoState.isAudioEnabled ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15"

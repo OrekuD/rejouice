@@ -263,17 +263,23 @@ export default function Home() {
             image={rivianImage}
             logo={<RivianLogo scale={1.5} />}
             aspectRatio="136 / 87.3"
+            videoUrl={rivianVideoUrl}
+            label="Case study Rivian"
           />
           <div className="grid grid-cols-2 gap-5">
             <HighlightCard
               image={ouraImage}
               logo={<OuraLogo scale={1.5} />}
               aspectRatio="67 / 87"
+              videoUrl={ouraRingVideoUrl}
+              label="Case study Oura Ring"
             />
             <HighlightCard
               image={moxionImage}
               logo={<MoxionLogo scale={1.5} />}
               aspectRatio="67 / 87"
+              videoUrl={moxionVideoUrl}
+              label="Case study Moxion Power"
             />
           </div>
         </div>
