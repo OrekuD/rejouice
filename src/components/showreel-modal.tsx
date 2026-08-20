@@ -61,7 +61,7 @@ export const ShowreelModal = ({
   );
 
   const onTimeUpdate = React.useCallback(() => {
-    const root: any = document.querySelector(":root");
+    const root = document.querySelector(":root") as HTMLElement;
 
     if (!videoRef.current || !root) return;
     const currentTime = videoRef.current.currentTime;

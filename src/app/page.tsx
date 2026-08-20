@@ -143,7 +143,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        <CustomLink fontSize={14}>Let's talk</CustomLink>
+        <CustomLink fontSize={14}>Let&apos;s talk</CustomLink>
       </header>
       <motion.div
         className="pt-20 px-9 h-[90dvh] z-20 relative bg-black flex flex-col pb-8"
@@ -230,12 +230,12 @@ export default function Home() {
       <div className="px-10 mb-48 pt-14 relative z-20">
         <p className="text-6xl leading-none">
           <span className="opacity-0">something</span> We blend the power of
-          strategy, design, and performance marketing to transform founders'
+          strategy, design, and performance marketing to transform founders&apos;
           visions into remarkable brands. See <span>our services.</span>
         </p>
         <div className="w-full h-[1px] mt-14 bg-[#494949] " />
         <div className="pt-6 text-lg grid grid-cols-2">
-          <p>Tomorrow's brands, today.</p>
+          <p>Tomorrow&apos;s brands, today.</p>
           <div className="space-y-4 max-w-[340px]">
             <p>We are a growth accelerator.</p>
             <p>
